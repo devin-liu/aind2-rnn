@@ -8,6 +8,7 @@ import re
 
 
 # use numpy to transform 1d array into sliding windows of specified size
+# http://stackoverflow.com/questions/35221645/rolling-window-on-a-circular-array/35221942
 def rolling_window(a, window):
     shape = a.shape[:-1] + (a.shape[-1] - window + 1, window)
     strides = a.strides + (a.strides[-1],)
@@ -54,6 +55,7 @@ def clean_text(text):
     text = re.sub(alpha_num_punc, '', text)
 
 # use numpy to transform 1d array into sliding windows of specified size
+# http://stackoverflow.com/questions/40084931/taking-subarrays-from-numpy-array-with-given-stride-stepsize/40085052#40085052
 def rolling_window_steps(a, L, S):
     nrows = ((a.size-L)//S)+1
     n = a.strides[0]
